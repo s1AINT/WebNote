@@ -1,0 +1,54 @@
+﻿@model List<WebNote.Entity.Note>
+
+<style>
+    body {
+        background-color: #f2f2f2;
+    }
+
+    .content {
+        background-color: #fff;
+        padding: 20px;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container content">
+    <h2 class="text-center">Нотатки</h2>
+
+    <p class="text-center">
+        <a href="@Url.Action("Create")" class="btn btn-primary">Створити нову</a>
+        
+        <a href="@Url.Action("ViewNotes", "Notes")?id=@ViewBag.UserId" class="btn btn-secondary" target="_blank">Згенерувати посилання</a>
+
+
+
+        <a href="@Url.Action("Logout", "Account")" class="btn btn-secondary">Вийти з акаунту</a>
+    </p>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Назва</th>
+                    <th>Зміст</th>
+                    <th>Створено</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var note in Model)
+                {
+                    <tr>
+                        <td>@note.Title</td>
+                        <td>@note.Content</td>
+                        <td>@note.CreatedAt</td>
+                        <td>
+                            <a href="@Url.Action("Edit", new { id = note.Id })" class="btn btn-primary">Редагувати</a>
+                            <a href="@Url.Action("Delete", new { id = note.Id })" class="btn btn-danger">Видалити</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

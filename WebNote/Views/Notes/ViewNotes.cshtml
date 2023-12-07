@@ -1,0 +1,39 @@
+﻿@model List<WebNote.Entity.Note>
+
+<style>
+    body {
+        background-color: #f2f2f2;
+    }
+
+    .content {
+        background-color: #fff;
+        padding: 20px;
+        margin-top: 20px;
+    }
+</style>
+
+<div class="container content">
+    <h2 class="text-center">Нотатки користувача @ViewBag.Name</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Назва</th>
+                    <th>Зміст</th>
+                    <th>Створено</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var note in Model)
+                {
+                    <tr>
+                        <td>@note.Title</td>
+                        <td>@note.Content</td>
+                        <td>@note.CreatedAt</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

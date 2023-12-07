@@ -1,0 +1,26 @@
+﻿@model WebNote.Models.NoteViewModel
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <h2>Створення нотатки</h2>
+
+            @using (Html.BeginForm("Create", "Notes"))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Title)
+                    @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Content)
+                    @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Створити</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>
